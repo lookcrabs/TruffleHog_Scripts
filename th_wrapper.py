@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # vim:fenc=utf-8
 #
-# Copyright © 2018 seapasulli <seapasulli@seanslaptop.cdis>
+# Copyright © 2018 lookcrabs <6787558+lookcrabs@users.noreply.github.com>
 #
 # Distributed under terms of the MIT license.
 
