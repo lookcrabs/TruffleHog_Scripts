@@ -129,7 +129,10 @@ def promptAnswer(conf, question_string):
     #Prompt user for question and store answer as boolean
     answer = ''
     while answer not in YNO:
-        answer = input("{} [y/N]  ".format(question_string))
+        if sys.version_info >= 3:
+            answer = input("{} [y/N]  ".format(question_string))
+        else:
+            answer = raw_input("{} [y/N] ".format(question_string))
         if answer in YES:
             printDebug(conf, "Answered {}".format(answer))
             return True
@@ -222,12 +225,12 @@ def addMatch(whitelist, match):
 def issueJson(match):
     found_issues = match
     found_issue_dict = {}
-    found_issue_dict['diff'] = "{}".format(hashlib.sha256(found_issues['diff'].encode()).hexdigest())
+    found_issue_dict['diff'] = "{}".format(hashlib.sha256(found_issues['diff'].encode('utf-8')).hexdigest())
     found_issue_dict['path'] = "{}".format(found_issues['path'])
     found_issue_dict['branch'] = "{}".format(found_issues['branch'])
-    found_issue_dict['commit'] = "{}".format(hashlib.sha256(found_issues['commit'].encode()).hexdigest())
+    found_issue_dict['commit'] = "{}".format(hashlib.sha256(found_issues['commit'].encode('utf-8')).hexdigest())
     found_issue_dict['stringsFound'] = [ x for x in found_issues['stringsFound'] ]
-    found_issue_dict['printDiff'] = "{}".format(hashlib.sha256(found_issues['printDiff'].encode()).hexdigest())
+    found_issue_dict['printDiff'] = "{}".format(hashlib.sha256(found_issues['printDiff'].encode('utf-8')).hexdigest())
     found_issue_dict['commitHash'] = "{}".format(found_issues['commitHash'])
     found_issue_dict['reason'] = "{}".format(found_issues['reason'])
     issue_json = json.dumps(found_issue_dict)
