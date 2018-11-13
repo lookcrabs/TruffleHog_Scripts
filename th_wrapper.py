@@ -49,7 +49,7 @@ DEFAULT_CONFIG = {
   "flags": {
       "do_regex": True,
       "do_entropy": True,
-      "max_depth": 100
+      "max_depth": 50
     },
   "gitRemote": None,
   "whitelistF": "truffles.json",
